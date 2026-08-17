@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>秋日卡牌 · 生日诗签</title>
+    <title>秋日身份卡</title>
     <style>
-        /* ===== 样式与之前完全一致 ===== */
+        /* ===== 样式与之前一致 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -70,7 +70,7 @@
         }
         .home-page { padding-top: 18px; gap: 10px; }
         .home-page .kv-icon { font-size: 52px; margin-bottom: 2px; filter: drop-shadow(0 8px 20px rgba(180,120,70,0.25)); }
-        .home-page .main-title { font-size: 34px; font-weight: 700; color: #3d2a1b; letter-spacing: 8px; text-shadow: 0 2px 12px rgba(180,130,80,0.2); margin-bottom: 2px; }
+        .home-page .main-title { font-size: 34px; font-weight: 700; color: #3d2a1b; letter-spacing: 6px; text-shadow: 0 2px 12px rgba(180,130,80,0.2); margin-bottom: 2px; }
         .home-page .sub-title { font-size: 16px; color: #6b4f38; letter-spacing: 2px; font-weight: 400; opacity: 0.85; margin-bottom: 18px; }
         .glass-card {
             width: 100%;
@@ -174,8 +174,8 @@
             box-shadow: inset 0 0 40px rgba(200,170,145,0.08);
             padding: 14px 10px;
         }
-        .card-front .card-label { font-size: 12px; color: #a88872; letter-spacing: 2px; font-weight: 400; opacity: 0.6; margin-bottom: 4px; border-bottom: 1px solid rgba(180,150,130,0.15); padding-bottom: 4px; width: 60%; }
-        .card-front .card-content { font-size: 20px; font-weight: 600; color: #3d2a1b; line-height: 1.5; flex: 1; display: flex; align-items: center; justify-content: center; word-break: break-word; padding: 4px 2px; }
+        .card-front .card-label { font-size: 12px; color: #a88872; letter-spacing: 2px; font-weight: 400; opacity: 0.6; margin-bottom: 4px; border-bottom: 1px solid rgba(180,150,130,0.15); padding-bottom: 4px; width: 70%; }
+        .card-front .card-content { font-size: 18px; font-weight: 600; color: #3d2a1b; line-height: 1.5; flex: 1; display: flex; align-items: center; justify-content: center; word-break: break-word; padding: 4px 2px; }
         .card-front .card-content.small { font-size: 15px; font-weight: 500; line-height: 1.6; letter-spacing: 0.5px; }
         .card-badge { position: absolute; top: -6px; right: -6px; background: rgba(180,130,90,0.85); backdrop-filter: blur(6px); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: 1px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); z-index: 5; opacity: 0; transition: opacity 0.5s 0.5s; }
         .card-badge.show { opacity: 1; }
@@ -318,24 +318,24 @@
         .gap-6 { gap: 6px; }
         @media (max-width: 420px) {
             .app { padding: 16px 14px 22px; border-radius: 28px; min-height: 640px; }
-            .home-page .main-title { font-size: 28px; letter-spacing: 6px; }
+            .home-page .main-title { font-size: 28px; letter-spacing: 4px; }
             .home-page .kv-icon { font-size: 40px; }
             .glass-card { padding: 22px 16px 24px; border-radius: 22px; }
             #birthInput { font-size: 24px; padding: 8px 2px; letter-spacing: 4px; }
             .btn-primary { font-size: 17px; padding: 14px 0; }
             .cards-grid { gap: 10px; }
-            .card-front .card-content { font-size: 17px; }
+            .card-front .card-content { font-size: 16px; }
             .card-front .card-content.small { font-size: 13px; }
             .poem-reveal .poem-lines { font-size: 15px; line-height: 1.9; }
             .result-actions .btn-secondary { font-size: 14px; padding: 12px 0; min-width: 80px; }
         }
         @media (max-width: 360px) {
             .app { padding: 12px 10px 16px; border-radius: 24px; }
-            .home-page .main-title { font-size: 24px; letter-spacing: 4px; }
+            .home-page .main-title { font-size: 24px; letter-spacing: 3px; }
             .glass-card { padding: 16px 12px 18px; }
             #birthInput { font-size: 20px; letter-spacing: 3px; }
             .cards-grid { gap: 8px; }
-            .card-front .card-content { font-size: 15px; }
+            .card-front .card-content { font-size: 14px; }
             .card-front .card-content.small { font-size: 12px; }
             .poem-reveal .poem-lines { font-size: 14px; }
         }
@@ -367,26 +367,26 @@
         <!-- 首页 -->
         <div class="page home-page active" id="homePage">
             <div class="kv-icon">🍁</div>
-            <div class="main-title">秋日卡牌</div>
-            <div class="sub-title">输入生日，翻开属于你的秋日诗签</div>
+            <div class="main-title">秋日身份卡</div>
+            <div class="sub-title">输入手机号后四位，翻开你的秋日身份卡</div>
             <div class="glass-card">
                 <div class="input-group">
-                    <div class="input-label">📅 你的生日（月日）</div>
+                    <div class="input-label">📱 手机号后四位</div>
                     <div class="birth-input-wrap">
-                        <span class="prefix">📖</span>
+                        <span class="prefix">#</span>
                         <input type="text" id="birthInput" placeholder="0817" maxlength="4" inputmode="numeric" autocomplete="off" />
-                        <span class="suffix">· 四位数</span>
+                        <span class="suffix">· 四位数字</span>
                     </div>
-                    <div class="hint-text">例：0101 · 0817 · 1225</div>
-                    <div class="error-text" id="errorText">请输入正确的生日（月日）</div>
-                    <button class="btn-primary" id="startBtn">翻开秋日卡牌</button>
+                    <div class="hint-text">例：0817 · 1234 · 9999</div>
+                    <div class="error-text" id="errorText">请输入4位数字</div>
+                    <button class="btn-primary" id="startBtn">翻开秋日身份卡</button>
                 </div>
             </div>
         </div>
 
         <!-- 翻牌页 -->
         <div class="page cards-page" id="cardsPage">
-            <div class="page-header">🍂 翻开你的 <span>秋日诗签</span></div>
+            <div class="page-header">🍂 翻开你的 <span>秋日身份卡</span></div>
             <div class="cards-grid" id="cardsGrid">
                 <div class="card-container" data-index="0">
                     <div class="card-inner" id="cardInner0">
@@ -395,7 +395,7 @@
                             <div class="card-index">①</div>
                         </div>
                         <div class="card-face card-front">
-                            <div class="card-label">· 人 物 ·</div>
+                            <div class="card-label">· 秋日身份 ·</div>
                             <div class="card-content" id="cardContent0">—</div>
                         </div>
                     </div>
@@ -408,7 +408,7 @@
                             <div class="card-index">②</div>
                         </div>
                         <div class="card-face card-front">
-                            <div class="card-label">· 场 景 ·</div>
+                            <div class="card-label">· 秋日常驻地 ·</div>
                             <div class="card-content" id="cardContent1">—</div>
                         </div>
                     </div>
@@ -421,8 +421,8 @@
                             <div class="card-index">③</div>
                         </div>
                         <div class="card-face card-front">
-                            <div class="card-label">· 心 境 ·</div>
-                            <div class="card-content" id="cardContent2">—</div>
+                            <div class="card-label">· 秋日精神状态 ·</div>
+                            <div class="card-content small" id="cardContent2">—</div>
                         </div>
                     </div>
                     <div class="card-badge" id="badge2">✦</div>
@@ -434,7 +434,7 @@
                             <div class="card-index">④</div>
                         </div>
                         <div class="card-face card-front">
-                            <div class="card-label">· 诗 意 ·</div>
+                            <div class="card-label">· 秋日嘴替 ·</div>
                             <div class="card-content small" id="cardContent3">—</div>
                         </div>
                     </div>
@@ -468,67 +468,70 @@
 
     <script>
         // ================================================================
-        //  词 库
+        //  词库 - 秋日身份卡
         // ================================================================
-        // 全部角色（用于随机）
-        const ALL_CHARACTERS = [
-            '旅人', '诗人', '追风的人', '造梦者', '拾光者',
-            '听风者', '远行者', '花匠', '归来的少年', '云游者'
-        ];
-        // 固定映射（用于数字2-9）
-        const CHARACTER_MAP = {
-            '2': '追风的人', '3': '造梦者', '4': '拾光者',
-            '5': '听风者', '6': '远行者', '7': '花匠',
-            '8': '归来的少年', '9': '云游者'
+        const IDENTITY_MAP = {
+            '0': '早八生存家',
+            '1': '摸鱼艺术家',
+            '2': '气氛组组长',
+            '3': '周末失踪人口',
+            '4': '奶茶续命师',
+            '5': '拖延研究员',
+            '6': '快乐干饭人',
+            '7': '朋友圈观察员',
+            '8': '松弛感代表',
+            '9': '理想生活体验官'
         };
 
-        // 场景词库（不变）
-        const SCENE_MAP = {
-            '0': '海边', '1': '清晨的小巷', '2': '晚风里',
-            '3': '山野之间', '4': '雨后的街角', '5': '落叶纷飞时',
-            '6': '森林深处', '7': '秋日原野', '8': '炊烟升起时',
-            '9': '初雪来临前'
+        const PLACE_MAP = {
+            '0': '工位旁',
+            '1': '咖啡店',
+            '2': '回家路上',
+            '3': '被窝里',
+            '4': '公园长椅',
+            '5': '公司茶水间',
+            '6': '商场里',
+            '7': '超市零食区',
+            '8': '车里',
+            '9': '小区楼下'
         };
 
-        // ----- 心境候选分组 -----
-        const MOOD_CANDIDATES = {
-            '0': ['静静等待着', '心怀温柔的', '珍藏此刻的'],
-            '1': ['轻轻想念着', '满怀期待的', '正向光而行'],
-            '2': ['正心向远方', '正听风而立'],
-            '3': ['轻声歌唱着', '奔赴热爱的']
+        const MOOD_MAP = {
+            '0': '一边努力，一边摆烂',
+            '1': '今天也想早点下班',
+            '2': '嘴上说随便，心里有答案',
+            '3': '再坚持一下就放假',
+            '4': '今天开始自律（第18次）',
+            '5': '正在恢复电量',
+            '6': '假装很淡定',
+            '7': '已读，但先放着',
+            '8': '一切都刚刚好',
+            '9': '保持乐观，偶尔发疯'
         };
-        // 默认池（用于 4-9 或未定义的数字）
-        const DEFAULT_MOOD_POOL = [
-            '静静等待着', '心怀温柔的', '轻轻想念着', '满怀期待的',
-            '正心向远方', '正听风而立', '轻声歌唱着', '奔赴热爱的',
-            '珍藏此刻的', '正向光而行'
-        ];
 
-        // 诗意结尾（不变）
-        const ENDING_MAP = {
-            '0': '去寻找远方，让脚步慢慢回应心之所向。',
-            '1': '把一路风景，悄悄收进心里。',
-            '2': '愿秋风轻轻吹过，也吹来久别重逢。',
-            '3': '让每一次出发，都遇见温柔的风景。',
-            '4': '去奔赴热爱，把平凡的日子走成诗。',
-            '5': '把喜欢的时光，留给未来慢慢回味。',
-            '6': '愿所有等待，都能与美好不期而遇。',
-            '7': '让每一个今天，都成为值得珍藏的一天。',
-            '8': '去拥抱秋天，让温柔落在每一个当下。',
-            '9': '把心里的期待，轻轻放进秋天。'
+        const QUOTE_MAP = {
+            '0': '秋天最适合，把烦恼留给昨天。',
+            '1': '今天先快乐，其他事情明天再说。',
+            '2': '风会吹散疲惫，好心情记得自己找。',
+            '3': '生活没有标准答案，舒服一点就很好。',
+            '4': '别总赶路，偶尔也等等自己。',
+            '5': '今天不用满分，及格就很厉害。',
+            '6': '秋天来了，适合认真偷个懒。',
+            '7': '所有努力，都会在未来慢慢兑现。',
+            '8': '允许自己慢一点，也是一种前进。',
+            '9': '今天也很好，因为你认真生活。'
         };
 
         // ================================================================
         //  状 态
         // ================================================================
         let state = {
-            birth: '',
-            digits: [],
-            words: [], // [人物, 场景, 心境, 结尾]
+            tail: '',          // 后四位
+            digits: [],        // 四位数字数组
+            words: [],         // [身份, 驻地, 精神状态, 嘴替]
             isFlipping: false,
             flippedCount: 0,
             isComplete: false,
-            lastMood: null,   // 记录上一次选中的心境词，用于避免重复
         };
 
         const $ = id => document.getElementById(id);
@@ -559,19 +562,14 @@
         //  工 具 函 数
         // ================================================================
 
-        function isValidDate(mmd) {
-            if (!/^\d{4}$/.test(mmd)) return false;
-            const month = parseInt(mmd.slice(0, 2), 10);
-            const day = parseInt(mmd.slice(2, 4), 10);
-            if (month < 1 || month > 12) return false;
-            if (day < 1) return false;
-            const daysInMonth = new Date(2000, month, 0).getDate();
-            return day <= daysInMonth;
+        // 只校验是否为4位数字
+        function isValidTail(tail) {
+            return /^\d{4}$/.test(tail);
         }
 
-        function formatBirth(mmd) {
-            if (!mmd || mmd.length !== 4) return mmd;
-            return mmd.slice(0, 2) + '.' + mmd.slice(2, 4);
+        // 格式化显示
+        function formatTail(tail) {
+            return `后四位 · ${tail}`;
         }
 
         let toastTimer = null;
@@ -588,60 +586,27 @@
         //  核 心 逻 辑
         // ================================================================
 
-        // 获取人物（第一位数字）
-        function getCharacter(digit) {
-            if (digit === '0' || digit === '1') {
-                const idx = Math.floor(Math.random() * ALL_CHARACTERS.length);
-                return ALL_CHARACTERS[idx];
-            }
-            return CHARACTER_MAP[digit] || '旅人';
+        // 直接用后四位映射
+        function getWordsFromTail(tail) {
+            const digits = tail.split('');
+            const identity = IDENTITY_MAP[digits[0]] || '早八生存家';
+            const place = PLACE_MAP[digits[1]] || '工位旁';
+            const mood = MOOD_MAP[digits[2]] || '一边努力，一边摆烂';
+            const quote = QUOTE_MAP[digits[3]] || '秋天最适合，把烦恼留给昨天。';
+            return [identity, place, mood, quote, digits];
         }
 
-        // ----- 新增避免重复逻辑：getMood 会排除上次选中的词 -----
-        function getMood(digit) {
-            // 获取候选数组
-            let candidates = MOOD_CANDIDATES[digit] || DEFAULT_MOOD_POOL;
-            // 如果候选池只有一个词，直接返回，无法避免重复
-            if (candidates.length === 1) {
-                state.lastMood = candidates[0];
-                return candidates[0];
-            }
-            // 过滤掉上次选中的词（如果有且候选池长度>1）
-            let available = candidates;
-            if (state.lastMood && candidates.includes(state.lastMood)) {
-                available = candidates.filter(item => item !== state.lastMood);
-                // 如果过滤后为空（理论上不会，因为长度>1），则回退到全部候选
-                if (available.length === 0) {
-                    available = candidates;
-                }
-            }
-            // 从可用候选中随机选一个
-            const selected = available[Math.floor(Math.random() * available.length)];
-            state.lastMood = selected;
-            return selected;
-        }
-
-        // 根据生日获取四个词
-        function getWordsFromBirth(birth) {
-            const digits = birth.split('');
-            const character = getCharacter(digits[0]);
-            const scene = SCENE_MAP[digits[1]] || '秋日原野';
-            const mood = getMood(digits[2]);      // 新逻辑（含避免重复）
-            const ending = ENDING_MAP[digits[3]] || '让每一个今天，都成为值得珍藏的一天。';
-            return [character, scene, mood, ending];
-        }
-
-        // 构建诗句（第三句直接使用心境词，不加额外符号）
+        // 构建诗句
         function buildPoem(words) {
             return [
                 `我是${words[0]}，`,
-                `在${words[1]}，`,
-                `${words[2]}`,
+                `常驻${words[1]}，`,
+                `${words[2]}，`,
                 `${words[3]}`
             ];
         }
 
-        // 重置卡牌（保留lastMood，但允许新的随机）
+        // 重置卡牌
         function resetCards() {
             cardInners.forEach((inner, i) => {
                 inner.classList.remove('flipped');
@@ -701,16 +666,15 @@
         function showCompletePoem(words) {
             const lines = buildPoem(words);
             poemLines.innerHTML = lines.map(l => `<span class="line">${l}</span>`).join('');
-            poemBirth.textContent = `✦ 生日 · ${formatBirth(state.birth)} ✦`;
+            poemBirth.textContent = `📱 ${formatTail(state.tail)}`;
             poemReveal.classList.add('show');
         }
 
-        function runExperience(birth) {
-            state.birth = birth;
-            state.digits = birth.split('');
-            // 重置 lastMood，让新的体验重新开始避免重复
-            state.lastMood = null;
-            state.words = getWordsFromBirth(birth);
+        function runExperience(tail) {
+            state.tail = tail;
+            const [identity, place, mood, quote, digits] = getWordsFromTail(tail);
+            state.digits = digits;
+            state.words = [identity, place, mood, quote];
 
             homePage.classList.remove('active');
             cardsPage.classList.add('active');
@@ -728,11 +692,10 @@
         function goHome() {
             if (state.isFlipping) return;
             resetCards();
-            state.birth = '';
+            state.tail = '';
             state.digits = [];
             state.words = [];
             state.isComplete = false;
-            state.lastMood = null;   // 重置记忆
             cardsPage.classList.remove('active');
             homePage.classList.add('active');
             birthInput.value = '';
@@ -747,7 +710,7 @@
         //  海 报 生 成 (Canvas)
         // ================================================================
 
-        function generatePoster(birth, words) {
+        function generatePoster(tail, words) {
             const canvas = $('posterCanvas');
             const ctx = canvas.getContext('2d');
             const W = 600, H = 800;
@@ -795,12 +758,12 @@
             ctx.font = '600 36px "Noto Serif SC", "PingFang SC", serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'top';
-            ctx.fillText('🍂 秋日诗签', W / 2, 60);
+            ctx.fillText('🍂 秋日身份卡', W / 2, 60);
 
             ctx.fillStyle = '#8b6548';
             ctx.font = '400 18px "Noto Serif SC", serif';
             ctx.textBaseline = 'top';
-            ctx.fillText(`✦ 生日 · ${formatBirth(birth)} ✦`, W / 2, 112);
+            ctx.fillText(`📱 ${formatTail(tail)}`, W / 2, 112);
 
             ctx.strokeStyle = 'rgba(180,150,130,0.15)';
             ctx.lineWidth = 1;
@@ -834,7 +797,7 @@
             ctx.fillStyle = '#b99a82';
             ctx.font = '400 14px "Noto Serif SC", serif';
             ctx.textBaseline = 'top';
-            ctx.fillText('✦ 秋日卡牌 · 生日诗签 ✦', W / 2, logoY);
+            ctx.fillText('✦ 秋日身份卡 · 尾号诗签 ✦', W / 2, logoY);
 
             ctx.fillStyle = '#c9b094';
             ctx.font = '300 12px "Noto Serif SC", serif';
@@ -864,7 +827,7 @@
             this.value = val;
             errorText.classList.remove('show');
             if (val.length === 4) {
-                if (isValidDate(val)) {
+                if (isValidTail(val)) {
                     errorText.classList.remove('show');
                     startBtn.disabled = false;
                 } else {
@@ -876,21 +839,6 @@
             }
         });
 
-        birthInput.addEventListener('blur', function() {
-            let val = this.value;
-            if (val.length === 3) {
-                val = '0' + val;
-                this.value = val;
-                if (isValidDate(val)) {
-                    errorText.classList.remove('show');
-                    startBtn.disabled = false;
-                } else {
-                    errorText.classList.add('show');
-                    startBtn.disabled = true;
-                }
-            }
-        });
-
         birthInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && !startBtn.disabled) {
                 startBtn.click();
@@ -899,11 +847,7 @@
 
         startBtn.addEventListener('click', function() {
             const val = birthInput.value.trim();
-            if (val.length !== 4) {
-                errorText.classList.add('show');
-                return;
-            }
-            if (!isValidDate(val)) {
+            if (val.length !== 4 || !isValidTail(val)) {
                 errorText.classList.add('show');
                 return;
             }
@@ -914,12 +858,12 @@
         homeBtn.addEventListener('click', goHome);
 
         shareBtn.addEventListener('click', function() {
-            if (!state.isComplete || !state.birth || !state.words) {
+            if (!state.isComplete || !state.tail || !state.words) {
                 showToast('请先完成翻牌');
                 return;
             }
             try {
-                generatePoster(state.birth, state.words);
+                generatePoster(state.tail, state.words);
                 $('posterOverlay').classList.add('active');
                 document.body.style.overflow = 'hidden';
             } catch (err) {
@@ -941,7 +885,7 @@
         $('downloadPoster').addEventListener('click', function() {
             const canvas = $('posterCanvas');
             const link = document.createElement('a');
-            link.download = `秋日诗签_${state.birth}.png`;
+            link.download = `秋日身份卡_${state.tail}.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
             showToast('💾 已保存到相册');
@@ -953,7 +897,7 @@
                 return;
             }
             const lines = buildPoem(state.words);
-            const poemText = lines.join('\n') + `\n\n✦ 生日 · ${formatBirth(state.birth)} ✦`;
+            const poemText = lines.join('\n') + `\n\n📱 ${formatTail(state.tail)}`;
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(poemText).then(() => {
                     showToast('📋 诗歌已复制到剪贴板');
@@ -986,7 +930,7 @@
         //  初 始 化
         // ================================================================
         startBtn.disabled = true;
-        console.log('🍂 秋日卡牌 · 生日诗签 已加载（心境避免重复）');
+        console.log('🍂 秋日身份卡 已加载（输入后四位）');
     </script>
 
 </body>
