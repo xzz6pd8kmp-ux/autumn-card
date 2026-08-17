@@ -490,7 +490,7 @@
             '9': '初雪来临前'
         };
 
-        // ----- 新心境映射：按数字分组，随机选取 -----
+        // ----- 心境候选分组 -----
         const MOOD_CANDIDATES = {
             '0': ['静静等待着', '心怀温柔的', '珍藏此刻的'],
             '1': ['轻轻想念着', '满怀期待的', '正向光而行'],
@@ -528,6 +528,7 @@
             isFlipping: false,
             flippedCount: 0,
             isComplete: false,
+            lastMood: null,   // 记录上一次选中的心境词，用于避免重复
         };
 
         const $ = id => document.getElementById(id);
@@ -596,14 +597,28 @@
             return CHARACTER_MAP[digit] || '旅人';
         }
 
-        // 获取心境（第三位数字）—— 随机选取
+        // ----- 新增避免重复逻辑：getMood 会排除上次选中的词 -----
         function getMood(digit) {
-            const candidates = MOOD_CANDIDATES[digit];
-            if (candidates && candidates.length > 0) {
-                return candidates[Math.floor(Math.random() * candidates.length)];
+            // 获取候选数组
+            let candidates = MOOD_CANDIDATES[digit] || DEFAULT_MOOD_POOL;
+            // 如果候选池只有一个词，直接返回，无法避免重复
+            if (candidates.length === 1) {
+                state.lastMood = candidates[0];
+                return candidates[0];
             }
-            // 4-9 或未定义时，从默认池随机
-            return DEFAULT_MOOD_POOL[Math.floor(Math.random() * DEFAULT_MOOD_POOL.length)];
+            // 过滤掉上次选中的词（如果有且候选池长度>1）
+            let available = candidates;
+            if (state.lastMood && candidates.includes(state.lastMood)) {
+                available = candidates.filter(item => item !== state.lastMood);
+                // 如果过滤后为空（理论上不会，因为长度>1），则回退到全部候选
+                if (available.length === 0) {
+                    available = candidates;
+                }
+            }
+            // 从可用候选中随机选一个
+            const selected = available[Math.floor(Math.random() * available.length)];
+            state.lastMood = selected;
+            return selected;
         }
 
         // 根据生日获取四个词
@@ -611,7 +626,7 @@
             const digits = birth.split('');
             const character = getCharacter(digits[0]);
             const scene = SCENE_MAP[digits[1]] || '秋日原野';
-            const mood = getMood(digits[2]);      // 新逻辑
+            const mood = getMood(digits[2]);      // 新逻辑（含避免重复）
             const ending = ENDING_MAP[digits[3]] || '让每一个今天，都成为值得珍藏的一天。';
             return [character, scene, mood, ending];
         }
@@ -626,7 +641,7 @@
             ];
         }
 
-        // 重置卡牌
+        // 重置卡牌（保留lastMood，但允许新的随机）
         function resetCards() {
             cardInners.forEach((inner, i) => {
                 inner.classList.remove('flipped');
@@ -693,6 +708,8 @@
         function runExperience(birth) {
             state.birth = birth;
             state.digits = birth.split('');
+            // 重置 lastMood，让新的体验重新开始避免重复
+            state.lastMood = null;
             state.words = getWordsFromBirth(birth);
 
             homePage.classList.remove('active');
@@ -715,6 +732,7 @@
             state.digits = [];
             state.words = [];
             state.isComplete = false;
+            state.lastMood = null;   // 重置记忆
             cardsPage.classList.remove('active');
             homePage.classList.add('active');
             birthInput.value = '';
@@ -968,7 +986,7 @@
         //  初 始 化
         // ================================================================
         startBtn.disabled = true;
-        console.log('🍂 秋日卡牌 · 生日诗签 已加载（心境随机分组，人物0/1随机）');
+        console.log('🍂 秋日卡牌 · 生日诗签 已加载（心境避免重复）');
     </script>
 
 </body>
