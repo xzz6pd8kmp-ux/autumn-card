@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>秋日卡牌 · 生日诗签</title>
     <style>
-        /* ===== 全部样式保持不变 ===== */
+        /* ===== 样式与之前完全一致，保持不变 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -981,19 +981,34 @@
         // ================================================================
         //  词 库
         // ================================================================
+        // 全部角色列表（用于随机）
+        const ALL_CHARACTERS = [
+            '旅人',
+            '诗人',
+            '追风的人',
+            '造梦者',
+            '拾光者',
+            '听风者',
+            '远行者',
+            '花匠',
+            '归来的少年',
+            '云游者'
+        ];
+
+        // 固定映射（用于数字2-9）
+        const CHARACTER_MAP = {
+            '2': '追风的人',
+            '3': '造梦者',
+            '4': '拾光者',
+            '5': '听风者',
+            '6': '远行者',
+            '7': '花匠',
+            '8': '归来的少年',
+            '9': '云游者'
+        };
+
         const WORDS = {
-            character: {
-                '0': '旅人',
-                '1': '诗人',
-                '2': '追风的人',
-                '3': '造梦者',
-                '4': '拾光者',
-                '5': '观星人',
-                '6': '远行者',
-                '7': '花匠',
-                '8': '月亮收藏家',
-                '9': '云游者',
-            },
+            // character 不再直接使用，由函数动态生成
             scene: {
                 '0': '海边',
                 '1': '清晨的小巷',
@@ -1007,16 +1022,16 @@
                 '9': '初雪来临前',
             },
             mood: {
-                '0': '静静等待',
-                '1': '心怀温柔',
-                '2': '轻轻想念',
-                '3': '满怀期待',
-                '4': '心向远方',
-                '5': '听风而立',
-                '6': '轻声歌唱',
-                '7': '奔赴热爱',
-                '8': '珍藏此刻',
-                '9': '向光而行',
+                '0': '静静等待着',
+                '1': '心怀温柔的',
+                '2': '轻轻想念着',
+                '3': '满怀期待的',
+                '4': '正心向远方',
+                '5': '正听风而立',
+                '6': '轻声歌唱着',
+                '7': '奔赴热爱的',
+                '8': '珍藏此刻的',
+                '9': '正向光而行',
             },
             ending: {
                 '0': '去寻找远方，让脚步慢慢回应心之所向。',
@@ -1038,7 +1053,7 @@
         let state = {
             birth: '',
             digits: [],
-            words: [],
+            words: [], // [人物, 场景, 心境, 结尾]
             isFlipping: false,
             flippedCount: 0,
             isComplete: false,
@@ -1108,28 +1123,41 @@
         }
 
         // ================================================================
-        //  核 心 逻 辑
+        //  核 心 逻 辑 —— 人物随机处理
         // ================================================================
 
-        function getWordsFromBirth(birth) {
-            const digits = birth.split('').map(Number);
-            return [
-                WORDS.character[digits[0]] || '旅人',
-                WORDS.scene[digits[1]] || '秋日原野',
-                WORDS.mood[digits[2]] || '静静等待',
-                WORDS.ending[digits[3]] || '让每一个今天，都成为值得珍藏的一天。',
-            ];
+        function getCharacter(digit) {
+            // 如果第一位是 0 或 1，从全部角色中随机选一个
+            if (digit === '0' || digit === '1') {
+                const randomIndex = Math.floor(Math.random() * ALL_CHARACTERS.length);
+                return ALL_CHARACTERS[randomIndex];
+            }
+            // 否则根据映射取固定角色
+            return CHARACTER_MAP[digit] || '旅人'; // 兜底
         }
 
-        // ----- 修改点：第三句从“在{心境}的，”改为“{心境}的，” -----
+        function getWordsFromBirth(birth) {
+            const digits = birth.split('');
+            const character = getCharacter(digits[0]);
+            const scene = WORDS.scene[digits[1]] || '秋日原野';
+            const mood = WORDS.mood[digits[2]] || '静静等待着';
+            const ending = WORDS.ending[digits[3]] || '让每一个今天，都成为值得珍藏的一天。';
+            return [character, scene, mood, ending];
+        }
+
+        // 构建诗句（第三句直接使用心境词本身，无多余后缀）
         function buildPoem(words) {
             return [
                 `我是${words[0]}，`,
                 `在${words[1]}，`,
-                `${words[2]}的，`,    // 去掉了“在”字
+                `${words[2]}`,
                 `${words[3]}`,
             ];
         }
+
+        // ================================================================
+        //  翻牌与展示（与之前一致）
+        // ================================================================
 
         function resetCards() {
             cardInners.forEach((inner, i) => {
@@ -1198,7 +1226,7 @@
 
         function runExperience(birth) {
             state.birth = birth;
-            state.digits = birth.split('').map(Number);
+            state.digits = birth.split('');
             state.words = getWordsFromBirth(birth);
 
             homePage.classList.remove('active');
@@ -1232,7 +1260,7 @@
         }
 
         // ================================================================
-        //  海 报 生 成 (Canvas) —— 使用同样的 buildPoem
+        //  海 报 生 成 (Canvas) —— 使用同样的 getWordsFromBirth 和 buildPoem
         // ================================================================
 
         function generatePoster(birth, words) {
@@ -1483,7 +1511,7 @@
 
         startBtn.disabled = true;
 
-        console.log('🍂 秋日卡牌 · 生日诗签 已加载（最终版）');
+        console.log('🍂 秋日卡牌 · 生日诗签 已加载（人物0和1随机）');
     </script>
 
 </body>
