@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>秋日卡牌 · 生日诗签</title>
     <style>
-        /* ===== 样式与之前完全一致，保持不变 ===== */
+        /* ===== 样式与之前完全一致 ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: "Noto Serif SC", "PingFang SC", "Microsoft YaHei", serif;
             background: #1e150f;
@@ -22,7 +21,6 @@
             padding: 12px;
             overflow-x: hidden;
         }
-
         .app {
             position: relative;
             width: 100%;
@@ -36,7 +34,6 @@
             backdrop-filter: blur(2px);
             transition: all 0.3s;
         }
-
         .leaf {
             position: absolute;
             pointer-events: none;
@@ -45,64 +42,18 @@
             animation: leafFloat linear infinite;
             z-index: 0;
         }
-        .leaf:nth-child(1) {
-            top: 5%;
-            left: 2%;
-            animation-duration: 14s;
-            font-size: 32px;
-            opacity: 0.2;
-        }
-        .leaf:nth-child(2) {
-            top: 15%;
-            right: 0%;
-            animation-duration: 18s;
-            font-size: 24px;
-            opacity: 0.18;
-            animation-delay: -3s;
-        }
-        .leaf:nth-child(3) {
-            bottom: 20%;
-            left: 0%;
-            animation-duration: 16s;
-            font-size: 36px;
-            opacity: 0.15;
-            animation-delay: -7s;
-        }
-        .leaf:nth-child(4) {
-            bottom: 5%;
-            right: 2%;
-            animation-duration: 20s;
-            font-size: 28px;
-            opacity: 0.2;
-            animation-delay: -11s;
-        }
-        .leaf:nth-child(5) {
-            top: 45%;
-            left: 85%;
-            animation-duration: 22s;
-            font-size: 20px;
-            opacity: 0.12;
-            animation-delay: -5s;
-        }
-
+        .leaf:nth-child(1) { top: 5%; left: 2%; animation-duration: 14s; font-size: 32px; opacity: 0.2; }
+        .leaf:nth-child(2) { top: 15%; right: 0%; animation-duration: 18s; font-size: 24px; opacity: 0.18; animation-delay: -3s; }
+        .leaf:nth-child(3) { bottom: 20%; left: 0%; animation-duration: 16s; font-size: 36px; opacity: 0.15; animation-delay: -7s; }
+        .leaf:nth-child(4) { bottom: 5%; right: 2%; animation-duration: 20s; font-size: 28px; opacity: 0.2; animation-delay: -11s; }
+        .leaf:nth-child(5) { top: 45%; left: 85%; animation-duration: 22s; font-size: 20px; opacity: 0.12; animation-delay: -5s; }
         @keyframes leafFloat {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-            }
-            25% {
-                transform: translate(18px, 30px) rotate(12deg) scale(1.05);
-            }
-            50% {
-                transform: translate(-6px, 60px) rotate(-8deg) scale(0.95);
-            }
-            75% {
-                transform: translate(22px, 90px) rotate(15deg) scale(1.02);
-            }
-            100% {
-                transform: translate(0px, 120px) rotate(0deg) scale(1);
-            }
+            0% { transform: translate(0,0) rotate(0deg) scale(1); }
+            25% { transform: translate(18px,30px) rotate(12deg) scale(1.05); }
+            50% { transform: translate(-6px,60px) rotate(-8deg) scale(0.95); }
+            75% { transform: translate(22px,90px) rotate(15deg) scale(1.02); }
+            100% { transform: translate(0px,120px) rotate(0deg) scale(1); }
         }
-
         .page {
             display: none;
             flex-direction: column;
@@ -112,99 +63,41 @@
             width: 100%;
             animation: fadeIn 0.6s ease;
         }
-        .page.active {
-            display: flex;
-        }
-
+        .page.active { display: flex; }
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(18px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-
-        .home-page {
-            padding-top: 18px;
-            gap: 10px;
-        }
-
-        .home-page .kv-icon {
-            font-size: 52px;
-            margin-bottom: 2px;
-            filter: drop-shadow(0 8px 20px rgba(180, 120, 70, 0.25));
-        }
-
-        .home-page .main-title {
-            font-size: 34px;
-            font-weight: 700;
-            color: #3d2a1b;
-            letter-spacing: 8px;
-            text-shadow: 0 2px 12px rgba(180, 130, 80, 0.2);
-            margin-bottom: 2px;
-        }
-
-        .home-page .sub-title {
-            font-size: 16px;
-            color: #6b4f38;
-            letter-spacing: 2px;
-            font-weight: 400;
-            opacity: 0.85;
-            margin-bottom: 18px;
-        }
-
+        .home-page { padding-top: 18px; gap: 10px; }
+        .home-page .kv-icon { font-size: 52px; margin-bottom: 2px; filter: drop-shadow(0 8px 20px rgba(180,120,70,0.25)); }
+        .home-page .main-title { font-size: 34px; font-weight: 700; color: #3d2a1b; letter-spacing: 8px; text-shadow: 0 2px 12px rgba(180,130,80,0.2); margin-bottom: 2px; }
+        .home-page .sub-title { font-size: 16px; color: #6b4f38; letter-spacing: 2px; font-weight: 400; opacity: 0.85; margin-bottom: 18px; }
         .glass-card {
             width: 100%;
-            background: rgba(255, 248, 240, 0.5);
+            background: rgba(255,248,240,0.5);
             backdrop-filter: blur(16px) saturate(1.3);
             -webkit-backdrop-filter: blur(16px) saturate(1.3);
             border-radius: 28px;
             padding: 28px 22px 30px;
-            box-shadow: 0 12px 40px rgba(80, 50, 30, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 240, 225, 0.35);
+            box-shadow: 0 12px 40px rgba(80,50,30,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,240,225,0.35);
             transition: all 0.3s;
         }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .input-label {
-            font-size: 15px;
-            color: #4d3727;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-
+        .input-group { display: flex; flex-direction: column; gap: 18px; }
+        .input-label { font-size: 15px; color: #4d3727; font-weight: 500; letter-spacing: 1px; text-align: center; }
         .birth-input-wrap {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: rgba(255, 245, 235, 0.5);
+            background: rgba(255,245,235,0.5);
             border-radius: 18px;
             padding: 6px 16px;
-            border: 1px solid rgba(200, 170, 145, 0.3);
+            border: 1px solid rgba(200,170,145,0.3);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
-        .birth-input-wrap:focus-within {
-            border-color: #c49a7a;
-            box-shadow: 0 0 0 4px rgba(196, 154, 122, 0.15);
-        }
-
-        .birth-input-wrap .prefix {
-            font-size: 18px;
-            color: #7a5f48;
-            font-weight: 500;
-            opacity: 0.6;
-        }
-
+        .birth-input-wrap:focus-within { border-color: #c49a7a; box-shadow: 0 0 0 4px rgba(196,154,122,0.15); }
+        .birth-input-wrap .prefix { font-size: 18px; color: #7a5f48; font-weight: 500; opacity: 0.6; }
         #birthInput {
             flex: 1;
             border: none;
@@ -220,43 +113,11 @@
             min-width: 0;
             width: 100%;
         }
-        #birthInput::placeholder {
-            color: #b99a82;
-            font-weight: 300;
-            font-size: 18px;
-            letter-spacing: 3px;
-            opacity: 0.5;
-        }
-
-        .birth-input-wrap .suffix {
-            font-size: 16px;
-            color: #7a5f48;
-            opacity: 0.5;
-            font-weight: 400;
-        }
-
-        .hint-text {
-            font-size: 13px;
-            color: #9a7a64;
-            text-align: center;
-            margin-top: -6px;
-            letter-spacing: 0.5px;
-        }
-
-        .error-text {
-            color: #c0392b;
-            font-size: 14px;
-            text-align: center;
-            min-height: 24px;
-            margin-top: -4px;
-            font-weight: 500;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .error-text.show {
-            opacity: 1;
-        }
-
+        #birthInput::placeholder { color: #b99a82; font-weight: 300; font-size: 18px; letter-spacing: 3px; opacity: 0.5; }
+        .birth-input-wrap .suffix { font-size: 16px; color: #7a5f48; opacity: 0.5; font-weight: 400; }
+        .hint-text { font-size: 13px; color: #9a7a64; text-align: center; margin-top: -6px; letter-spacing: 0.5px; }
+        .error-text { color: #c0392b; font-size: 14px; text-align: center; min-height: 24px; margin-top: -4px; font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+        .error-text.show { opacity: 1; }
         .btn-primary {
             width: 100%;
             padding: 16px 0;
@@ -270,263 +131,83 @@
             letter-spacing: 4px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 8px 28px rgba(184, 130, 90, 0.35);
+            box-shadow: 0 8px 28px rgba(184,130,90,0.35);
             position: relative;
             overflow: hidden;
         }
-        .btn-primary:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 36px rgba(184, 130, 90, 0.45);
-        }
-        .btn-primary:active:not(:disabled) {
-            transform: scale(0.97);
-        }
-        .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
+        .btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(184,130,90,0.45); }
+        .btn-primary:active:not(:disabled) { transform: scale(0.97); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
         .btn-primary::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
             opacity: 0;
             transition: opacity 0.6s;
             pointer-events: none;
         }
-        .btn-primary:hover:not(:disabled)::after {
-            opacity: 1;
-        }
-
-        .cards-page {
-            padding-top: 8px;
-            gap: 14px;
-            min-height: 600px;
-            justify-content: flex-start;
-        }
-
-        .cards-page .page-header {
-            font-size: 18px;
-            color: #4d3727;
-            font-weight: 500;
-            letter-spacing: 2px;
-            opacity: 0.7;
-            margin-bottom: 4px;
-        }
-        .cards-page .page-header span {
-            font-weight: 700;
-            color: #8b6548;
-            opacity: 1;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            width: 100%;
-            max-width: 360px;
-            margin: 0 auto;
-        }
-
-        .card-container {
-            perspective: 800px;
-            aspect-ratio: 4 / 5;
-            width: 100%;
-            cursor: default;
-            position: relative;
-        }
-
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-            transform-style: preserve-3d;
-            border-radius: 18px;
-            box-shadow: 0 6px 24px rgba(60, 40, 25, 0.15);
-        }
-
-        .card-inner.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .card-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            border-radius: 18px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 10px;
-            text-align: center;
-            overflow: hidden;
-            border: 1px solid rgba(255, 245, 235, 0.3);
-        }
-
+        .btn-primary:hover:not(:disabled)::after { opacity: 1; }
+        .cards-page { padding-top: 8px; gap: 14px; min-height: 600px; justify-content: flex-start; }
+        .cards-page .page-header { font-size: 18px; color: #4d3727; font-weight: 500; letter-spacing: 2px; opacity: 0.7; margin-bottom: 4px; }
+        .cards-page .page-header span { font-weight: 700; color: #8b6548; opacity: 1; }
+        .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; max-width: 360px; margin: 0 auto; }
+        .card-container { perspective: 800px; aspect-ratio: 4/5; width: 100%; cursor: default; position: relative; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.23,1,0.32,1); transform-style: preserve-3d; border-radius: 18px; box-shadow: 0 6px 24px rgba(60,40,25,0.15); }
+        .card-inner.flipped { transform: rotateY(180deg); }
+        .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 10px; text-align: center; overflow: hidden; border: 1px solid rgba(255,245,235,0.3); }
         .card-back {
             background: linear-gradient(145deg, #8b6f56, #6d4f3a);
             transform: rotateY(0deg);
-            box-shadow: inset 0 2px 20px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(200, 170, 145, 0.2);
-            background-image:
-                radial-gradient(circle at 20% 30%, rgba(220, 190, 160, 0.15) 0%, transparent 50%),
-                repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(200, 170, 145, 0.04) 8px, rgba(200, 170, 145, 0.04) 9px);
+            box-shadow: inset 0 2px 20px rgba(0,0,0,0.15);
+            border: 1px solid rgba(200,170,145,0.2);
+            background-image: radial-gradient(circle at 20% 30%, rgba(220,190,160,0.15) 0%, transparent 50%), repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(200,170,145,0.04) 8px, rgba(200,170,145,0.04) 9px);
         }
-        .card-back .back-pattern {
-            font-size: 40px;
-            opacity: 0.25;
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-        .card-back .back-pattern .small {
-            font-size: 18px;
-            opacity: 0.5;
-            letter-spacing: 4px;
-            font-weight: 300;
-        }
-        .card-back .card-index {
-            position: absolute;
-            bottom: 12px;
-            right: 14px;
-            font-size: 13px;
-            color: rgba(255, 235, 210, 0.3);
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
+        .card-back .back-pattern { font-size: 40px; opacity: 0.25; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); display: flex; flex-direction: column; align-items: center; gap: 2px; }
+        .card-back .back-pattern .small { font-size: 18px; opacity: 0.5; letter-spacing: 4px; font-weight: 300; }
+        .card-back .card-index { position: absolute; bottom: 12px; right: 14px; font-size: 13px; color: rgba(255,235,210,0.3); font-weight: 300; letter-spacing: 2px; }
         .card-front {
             background: linear-gradient(160deg, #fcf4ea, #f0e2d0);
             transform: rotateY(180deg);
-            border: 1px solid rgba(255, 240, 225, 0.5);
-            box-shadow: inset 0 0 40px rgba(200, 170, 145, 0.08);
+            border: 1px solid rgba(255,240,225,0.5);
+            box-shadow: inset 0 0 40px rgba(200,170,145,0.08);
             padding: 14px 10px;
         }
-
-        .card-front .card-label {
-            font-size: 12px;
-            color: #a88872;
-            letter-spacing: 2px;
-            font-weight: 400;
-            opacity: 0.6;
-            margin-bottom: 4px;
-            border-bottom: 1px solid rgba(180, 150, 130, 0.15);
-            padding-bottom: 4px;
-            width: 60%;
-        }
-
-        .card-front .card-content {
-            font-size: 20px;
-            font-weight: 600;
-            color: #3d2a1b;
-            line-height: 1.5;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            word-break: break-word;
-            padding: 4px 2px;
-        }
-        .card-front .card-content.small {
-            font-size: 15px;
-            font-weight: 500;
-            line-height: 1.6;
-            letter-spacing: 0.5px;
-        }
-
-        .card-badge {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: rgba(180, 130, 90, 0.85);
-            backdrop-filter: blur(6px);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 20px;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-            z-index: 5;
-            opacity: 0;
-            transition: opacity 0.5s 0.5s;
-        }
-        .card-badge.show {
-            opacity: 1;
-        }
-
+        .card-front .card-label { font-size: 12px; color: #a88872; letter-spacing: 2px; font-weight: 400; opacity: 0.6; margin-bottom: 4px; border-bottom: 1px solid rgba(180,150,130,0.15); padding-bottom: 4px; width: 60%; }
+        .card-front .card-content { font-size: 20px; font-weight: 600; color: #3d2a1b; line-height: 1.5; flex: 1; display: flex; align-items: center; justify-content: center; word-break: break-word; padding: 4px 2px; }
+        .card-front .card-content.small { font-size: 15px; font-weight: 500; line-height: 1.6; letter-spacing: 0.5px; }
+        .card-badge { position: absolute; top: -6px; right: -6px; background: rgba(180,130,90,0.85); backdrop-filter: blur(6px); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: 1px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); z-index: 5; opacity: 0; transition: opacity 0.5s 0.5s; }
+        .card-badge.show { opacity: 1; }
         .poem-reveal {
             width: 100%;
             max-width: 360px;
             margin: 10px auto 0;
             padding: 18px 20px 16px;
-            background: rgba(255, 248, 240, 0.55);
+            background: rgba(255,248,240,0.55);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 22px;
-            border: 1px solid rgba(255, 240, 225, 0.3);
+            border: 1px solid rgba(255,240,225,0.3);
             opacity: 0;
             transform: translateY(20px) scale(0.96);
-            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 8px 32px rgba(80, 50, 30, 0.08);
+            transition: all 0.7s cubic-bezier(0.23,1,0.32,1);
+            box-shadow: 0 8px 32px rgba(80,50,30,0.08);
             text-align: center;
         }
-        .poem-reveal.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .poem-reveal .poem-lines {
-            font-size: 17px;
-            line-height: 2;
-            color: #3d2a1b;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-        .poem-reveal .poem-lines .line {
-            display: block;
-        }
-        .poem-reveal .poem-lines .line:last-child {
-            color: #8b6548;
-            font-weight: 600;
-        }
-        .poem-reveal .poem-birth {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #a88872;
-            letter-spacing: 3px;
-            font-weight: 400;
-            border-top: 1px dashed rgba(180, 150, 130, 0.2);
-            padding-top: 10px;
-        }
-
-        .result-actions {
-            display: flex;
-            gap: 12px;
-            width: 100%;
-            max-width: 360px;
-            margin: 12px auto 0;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+        .poem-reveal.show { opacity: 1; transform: translateY(0) scale(1); }
+        .poem-reveal .poem-lines { font-size: 17px; line-height: 2; color: #3d2a1b; font-weight: 500; letter-spacing: 1px; }
+        .poem-reveal .poem-lines .line { display: block; }
+        .poem-reveal .poem-lines .line:last-child { color: #8b6548; font-weight: 600; }
+        .poem-reveal .poem-birth { margin-top: 10px; font-size: 14px; color: #a88872; letter-spacing: 3px; font-weight: 400; border-top: 1px dashed rgba(180,150,130,0.2); padding-top: 10px; }
+        .result-actions { display: flex; gap: 12px; width: 100%; max-width: 360px; margin: 12px auto 0; flex-wrap: wrap; justify-content: center; }
         .result-actions .btn-secondary {
             flex: 1;
             min-width: 100px;
             padding: 14px 0;
             border: none;
             border-radius: 60px;
-            background: rgba(255, 248, 240, 0.6);
+            background: rgba(255,248,240,0.6);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             color: #4d3727;
@@ -536,35 +217,18 @@
             letter-spacing: 2px;
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid rgba(200, 170, 145, 0.2);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(200,170,145,0.2);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
         }
-        .result-actions .btn-secondary:hover {
-            background: rgba(255, 248, 240, 0.85);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(80, 50, 30, 0.1);
-        }
-        .result-actions .btn-secondary:active {
-            transform: scale(0.97);
-        }
-        .result-actions .btn-secondary.primary {
-            background: linear-gradient(135deg, #d4a67a, #b8825a);
-            color: #fff;
-            border-color: transparent;
-            box-shadow: 0 6px 24px rgba(184, 130, 90, 0.3);
-        }
-        .result-actions .btn-secondary.primary:hover {
-            box-shadow: 0 10px 32px rgba(184, 130, 90, 0.4);
-        }
-
+        .result-actions .btn-secondary:hover { background: rgba(255,248,240,0.85); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(80,50,30,0.1); }
+        .result-actions .btn-secondary:active { transform: scale(0.97); }
+        .result-actions .btn-secondary.primary { background: linear-gradient(135deg, #d4a67a, #b8825a); color: #fff; border-color: transparent; box-shadow: 0 6px 24px rgba(184,130,90,0.3); }
+        .result-actions .btn-secondary.primary:hover { box-shadow: 0 10px 32px rgba(184,130,90,0.4); }
         .poster-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(20, 14, 10, 0.75);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(20,14,10,0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             z-index: 999;
@@ -573,46 +237,17 @@
             padding: 20px;
             animation: fadeIn 0.4s ease;
         }
-        .poster-overlay.active {
-            display: flex;
-        }
-
-        .poster-modal {
-            position: relative;
-            max-width: 380px;
-            width: 100%;
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-            animation: scaleIn 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        @keyframes scaleIn {
-            0% {
-                transform: scale(0.85) translateY(30px);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .poster-modal canvas {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 28px;
-        }
-
+        .poster-overlay.active { display: flex; }
+        .poster-modal { position: relative; max-width: 380px; width: 100%; border-radius: 28px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.6); animation: scaleIn 0.5s cubic-bezier(0.23,1,0.32,1); }
+        @keyframes scaleIn { 0% { transform: scale(0.85) translateY(30px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
+        .poster-modal canvas { display: block; width: 100%; height: auto; border-radius: 28px; }
         .poster-close {
             position: absolute;
-            top: 14px;
-            right: 14px;
-            width: 40px;
-            height: 40px;
+            top: 14px; right: 14px;
+            width: 40px; height: 40px;
             border-radius: 50%;
             border: none;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0,0,0,0.4);
             backdrop-filter: blur(8px);
             color: #fff;
             font-size: 22px;
@@ -623,16 +258,12 @@
             justify-content: center;
             z-index: 10;
         }
-        .poster-close:hover {
-            background: rgba(0, 0, 0, 0.6);
-            transform: rotate(90deg);
-        }
-
+        .poster-close:hover { background: rgba(0,0,0,0.6); transform: rotate(90deg); }
         .poster-actions {
             display: flex;
             gap: 12px;
             padding: 16px 18px 18px;
-            background: rgba(255, 248, 240, 0.95);
+            background: rgba(255,248,240,0.95);
             backdrop-filter: blur(12px);
             border-radius: 0 0 28px 28px;
             flex-wrap: wrap;
@@ -650,28 +281,19 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s;
-            background: rgba(200, 180, 165, 0.2);
+            background: rgba(200,180,165,0.2);
             color: #3d2a1b;
-            border: 1px solid rgba(180, 150, 130, 0.15);
+            border: 1px solid rgba(180,150,130,0.15);
         }
-        .poster-actions .btn-sm:hover {
-            background: rgba(200, 180, 165, 0.35);
-        }
-        .poster-actions .btn-sm.primary {
-            background: linear-gradient(135deg, #d4a67a, #b8825a);
-            color: #fff;
-            border-color: transparent;
-        }
-        .poster-actions .btn-sm.primary:hover {
-            box-shadow: 0 6px 24px rgba(184, 130, 90, 0.35);
-        }
-
+        .poster-actions .btn-sm:hover { background: rgba(200,180,165,0.35); }
+        .poster-actions .btn-sm.primary { background: linear-gradient(135deg, #d4a67a, #b8825a); color: #fff; border-color: transparent; }
+        .poster-actions .btn-sm.primary:hover { box-shadow: 0 6px 24px rgba(184,130,90,0.35); }
         .toast {
             position: fixed;
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%) translateY(80px);
-            background: rgba(30, 20, 15, 0.88);
+            background: rgba(30,20,15,0.88);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             color: #f0e4d8;
@@ -680,166 +302,50 @@
             font-size: 15px;
             font-weight: 400;
             letter-spacing: 1px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             z-index: 9999;
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
             pointer-events: none;
-            border: 1px solid rgba(255, 245, 230, 0.08);
+            border: 1px solid rgba(255,245,230,0.08);
             max-width: 85%;
             text-align: center;
         }
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-        .mt-8 {
-            margin-top: 8px;
-        }
-        .mt-12 {
-            margin-top: 12px;
-        }
-        .gap-6 {
-            gap: 6px;
-        }
-
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .hidden { display: none !important; }
+        .mt-8 { margin-top: 8px; }
+        .mt-12 { margin-top: 12px; }
+        .gap-6 { gap: 6px; }
         @media (max-width: 420px) {
-            .app {
-                padding: 16px 14px 22px;
-                border-radius: 28px;
-                min-height: 640px;
-            }
-            .home-page .main-title {
-                font-size: 28px;
-                letter-spacing: 6px;
-            }
-            .home-page .kv-icon {
-                font-size: 40px;
-            }
-            .glass-card {
-                padding: 22px 16px 24px;
-                border-radius: 22px;
-            }
-            #birthInput {
-                font-size: 24px;
-                padding: 8px 2px;
-                letter-spacing: 4px;
-            }
-            .btn-primary {
-                font-size: 17px;
-                padding: 14px 0;
-            }
-            .cards-grid {
-                gap: 10px;
-            }
-            .card-front .card-content {
-                font-size: 17px;
-            }
-            .card-front .card-content.small {
-                font-size: 13px;
-            }
-            .poem-reveal .poem-lines {
-                font-size: 15px;
-                line-height: 1.9;
-            }
-            .result-actions .btn-secondary {
-                font-size: 14px;
-                padding: 12px 0;
-                min-width: 80px;
-            }
+            .app { padding: 16px 14px 22px; border-radius: 28px; min-height: 640px; }
+            .home-page .main-title { font-size: 28px; letter-spacing: 6px; }
+            .home-page .kv-icon { font-size: 40px; }
+            .glass-card { padding: 22px 16px 24px; border-radius: 22px; }
+            #birthInput { font-size: 24px; padding: 8px 2px; letter-spacing: 4px; }
+            .btn-primary { font-size: 17px; padding: 14px 0; }
+            .cards-grid { gap: 10px; }
+            .card-front .card-content { font-size: 17px; }
+            .card-front .card-content.small { font-size: 13px; }
+            .poem-reveal .poem-lines { font-size: 15px; line-height: 1.9; }
+            .result-actions .btn-secondary { font-size: 14px; padding: 12px 0; min-width: 80px; }
         }
-
         @media (max-width: 360px) {
-            .app {
-                padding: 12px 10px 16px;
-                border-radius: 24px;
-            }
-            .home-page .main-title {
-                font-size: 24px;
-                letter-spacing: 4px;
-            }
-            .glass-card {
-                padding: 16px 12px 18px;
-            }
-            #birthInput {
-                font-size: 20px;
-                letter-spacing: 3px;
-            }
-            .cards-grid {
-                gap: 8px;
-            }
-            .card-front .card-content {
-                font-size: 15px;
-            }
-            .card-front .card-content.small {
-                font-size: 12px;
-            }
-            .poem-reveal .poem-lines {
-                font-size: 14px;
-            }
+            .app { padding: 12px 10px 16px; border-radius: 24px; }
+            .home-page .main-title { font-size: 24px; letter-spacing: 4px; }
+            .glass-card { padding: 16px 12px 18px; }
+            #birthInput { font-size: 20px; letter-spacing: 3px; }
+            .cards-grid { gap: 8px; }
+            .card-front .card-content { font-size: 15px; }
+            .card-front .card-content.small { font-size: 12px; }
+            .poem-reveal .poem-lines { font-size: 14px; }
         }
-
-        .loading-dots::after {
-            content: '...';
-            animation: dots 1.2s steps(4, end) infinite;
-        }
-        @keyframes dots {
-            0% {
-                content: '';
-            }
-            25% {
-                content: '.';
-            }
-            50% {
-                content: '..';
-            }
-            75% {
-                content: '...';
-            }
-            100% {
-                content: '';
-            }
-        }
-
-        .glow {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            pointer-events: none;
-            opacity: 0.2;
-            z-index: 1;
-        }
-        .glow.g1 {
-            width: 200px;
-            height: 200px;
-            background: #dbb68c;
-            top: -60px;
-            right: -40px;
-        }
-        .glow.g2 {
-            width: 160px;
-            height: 160px;
-            background: #c9a77b;
-            bottom: -40px;
-            left: -30px;
-        }
-        .glow.g3 {
-            width: 120px;
-            height: 120px;
-            background: #e8c9a8;
-            top: 40%;
-            right: -20px;
-            opacity: 0.12;
-        }
-
-        ::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-        }
+        .loading-dots::after { content: '...'; animation: dots 1.2s steps(4, end) infinite; }
+        @keyframes dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } 100% { content: ''; } }
+        .glow { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; opacity: 0.2; z-index: 1; }
+        .glow.g1 { width: 200px; height: 200px; background: #dbb68c; top: -60px; right: -40px; }
+        .glow.g2 { width: 160px; height: 160px; background: #c9a77b; bottom: -40px; left: -30px; }
+        .glow.g3 { width: 120px; height: 120px; background: #e8c9a8; top: 40%; right: -20px; opacity: 0.12; }
+        ::-webkit-scrollbar { width: 0; height: 0; }
     </style>
 </head>
 <body>
@@ -858,12 +364,11 @@
         <div class="leaf">🍁</div>
         <div class="leaf">🍂</div>
 
-        <!-- ====== 首页 ====== -->
+        <!-- 首页 -->
         <div class="page home-page active" id="homePage">
             <div class="kv-icon">🍁</div>
             <div class="main-title">秋日卡牌</div>
             <div class="sub-title">输入生日，翻开属于你的秋日诗签</div>
-
             <div class="glass-card">
                 <div class="input-group">
                     <div class="input-label">📅 你的生日（月日）</div>
@@ -879,18 +384,14 @@
             </div>
         </div>
 
-        <!-- ====== 翻牌页 ====== -->
+        <!-- 翻牌页 -->
         <div class="page cards-page" id="cardsPage">
             <div class="page-header">🍂 翻开你的 <span>秋日诗签</span></div>
-
             <div class="cards-grid" id="cardsGrid">
                 <div class="card-container" data-index="0">
                     <div class="card-inner" id="cardInner0">
                         <div class="card-face card-back">
-                            <div class="back-pattern">
-                                🍂
-                                <span class="small">✦ ✦ ✦</span>
-                            </div>
+                            <div class="back-pattern">🍂<span class="small">✦ ✦ ✦</span></div>
                             <div class="card-index">①</div>
                         </div>
                         <div class="card-face card-front">
@@ -900,14 +401,10 @@
                     </div>
                     <div class="card-badge" id="badge0">✦</div>
                 </div>
-
                 <div class="card-container" data-index="1">
                     <div class="card-inner" id="cardInner1">
                         <div class="card-face card-back">
-                            <div class="back-pattern">
-                                🍁
-                                <span class="small">✦ ✦ ✦</span>
-                            </div>
+                            <div class="back-pattern">🍁<span class="small">✦ ✦ ✦</span></div>
                             <div class="card-index">②</div>
                         </div>
                         <div class="card-face card-front">
@@ -917,14 +414,10 @@
                     </div>
                     <div class="card-badge" id="badge1">✦</div>
                 </div>
-
                 <div class="card-container" data-index="2">
                     <div class="card-inner" id="cardInner2">
                         <div class="card-face card-back">
-                            <div class="back-pattern">
-                                🍂
-                                <span class="small">✦ ✦ ✦</span>
-                            </div>
+                            <div class="back-pattern">🍂<span class="small">✦ ✦ ✦</span></div>
                             <div class="card-index">③</div>
                         </div>
                         <div class="card-face card-front">
@@ -934,14 +427,10 @@
                     </div>
                     <div class="card-badge" id="badge2">✦</div>
                 </div>
-
                 <div class="card-container" data-index="3">
                     <div class="card-inner" id="cardInner3">
                         <div class="card-face card-back">
-                            <div class="back-pattern">
-                                🍁
-                                <span class="small">✦ ✦ ✦</span>
-                            </div>
+                            <div class="back-pattern">🍁<span class="small">✦ ✦ ✦</span></div>
                             <div class="card-index">④</div>
                         </div>
                         <div class="card-face card-front">
@@ -965,7 +454,7 @@
         </div>
     </div>
 
-    <!-- ====== 海报弹窗 ====== -->
+    <!-- 海报弹窗 -->
     <div class="poster-overlay" id="posterOverlay">
         <div class="poster-modal">
             <button class="poster-close" id="posterClose">✕</button>
@@ -981,70 +470,52 @@
         // ================================================================
         //  词 库
         // ================================================================
-        // 全部角色列表（用于随机）
+        // 全部角色（用于随机）
         const ALL_CHARACTERS = [
-            '旅人',
-            '诗人',
-            '追风的人',
-            '造梦者',
-            '拾光者',
-            '听风者',
-            '远行者',
-            '花匠',
-            '归来的少年',
-            '云游者'
+            '旅人', '诗人', '追风的人', '造梦者', '拾光者',
+            '听风者', '远行者', '花匠', '归来的少年', '云游者'
         ];
-
         // 固定映射（用于数字2-9）
         const CHARACTER_MAP = {
-            '2': '追风的人',
-            '3': '造梦者',
-            '4': '拾光者',
-            '5': '听风者',
-            '6': '远行者',
-            '7': '花匠',
-            '8': '归来的少年',
-            '9': '云游者'
+            '2': '追风的人', '3': '造梦者', '4': '拾光者',
+            '5': '听风者', '6': '远行者', '7': '花匠',
+            '8': '归来的少年', '9': '云游者'
         };
 
-        const WORDS = {
-            // character 不再直接使用，由函数动态生成
-            scene: {
-                '0': '海边',
-                '1': '清晨的小巷',
-                '2': '晚风里',
-                '3': '山野之间',
-                '4': '雨后的街角',
-                '5': '落叶纷飞时',
-                '6': '森林深处',
-                '7': '秋日原野',
-                '8': '炊烟升起时',
-                '9': '初雪来临前',
-            },
-            mood: {
-                '0': '静静等待着',
-                '1': '心怀温柔的',
-                '2': '轻轻想念着',
-                '3': '满怀期待的',
-                '4': '正心向远方',
-                '5': '正听风而立',
-                '6': '轻声歌唱着',
-                '7': '奔赴热爱的',
-                '8': '珍藏此刻的',
-                '9': '正向光而行',
-            },
-            ending: {
-                '0': '去寻找远方，让脚步慢慢回应心之所向。',
-                '1': '把一路风景，悄悄收进心里。',
-                '2': '愿秋风轻轻吹过，也吹来久别重逢。',
-                '3': '让每一次出发，都遇见温柔的风景。',
-                '4': '去奔赴热爱，把平凡的日子走成诗。',
-                '5': '把喜欢的时光，留给未来慢慢回味。',
-                '6': '愿所有等待，都能与美好不期而遇。',
-                '7': '让每一个今天，都成为值得珍藏的一天。',
-                '8': '去拥抱秋天，让温柔落在每一个当下。',
-                '9': '把心里的期待，轻轻放进秋天。',
-            }
+        // 场景词库（不变）
+        const SCENE_MAP = {
+            '0': '海边', '1': '清晨的小巷', '2': '晚风里',
+            '3': '山野之间', '4': '雨后的街角', '5': '落叶纷飞时',
+            '6': '森林深处', '7': '秋日原野', '8': '炊烟升起时',
+            '9': '初雪来临前'
+        };
+
+        // ----- 新心境映射：按数字分组，随机选取 -----
+        const MOOD_CANDIDATES = {
+            '0': ['静静等待着', '心怀温柔的', '珍藏此刻的'],
+            '1': ['轻轻想念着', '满怀期待的', '正向光而行'],
+            '2': ['正心向远方', '正听风而立'],
+            '3': ['轻声歌唱着', '奔赴热爱的']
+        };
+        // 默认池（用于 4-9 或未定义的数字）
+        const DEFAULT_MOOD_POOL = [
+            '静静等待着', '心怀温柔的', '轻轻想念着', '满怀期待的',
+            '正心向远方', '正听风而立', '轻声歌唱着', '奔赴热爱的',
+            '珍藏此刻的', '正向光而行'
+        ];
+
+        // 诗意结尾（不变）
+        const ENDING_MAP = {
+            '0': '去寻找远方，让脚步慢慢回应心之所向。',
+            '1': '把一路风景，悄悄收进心里。',
+            '2': '愿秋风轻轻吹过，也吹来久别重逢。',
+            '3': '让每一次出发，都遇见温柔的风景。',
+            '4': '去奔赴热爱，把平凡的日子走成诗。',
+            '5': '把喜欢的时光，留给未来慢慢回味。',
+            '6': '愿所有等待，都能与美好不期而遇。',
+            '7': '让每一个今天，都成为值得珍藏的一天。',
+            '8': '去拥抱秋天，让温柔落在每一个当下。',
+            '9': '把心里的期待，轻轻放进秋天。'
         };
 
         // ================================================================
@@ -1074,22 +545,13 @@
         const toast = $('toast');
 
         const cardInners = [
-            $('cardInner0'),
-            $('cardInner1'),
-            $('cardInner2'),
-            $('cardInner3'),
+            $('cardInner0'), $('cardInner1'), $('cardInner2'), $('cardInner3')
         ];
         const cardContents = [
-            $('cardContent0'),
-            $('cardContent1'),
-            $('cardContent2'),
-            $('cardContent3'),
+            $('cardContent0'), $('cardContent1'), $('cardContent2'), $('cardContent3')
         ];
         const badges = [
-            $('badge0'),
-            $('badge1'),
-            $('badge2'),
-            $('badge3'),
+            $('badge0'), $('badge1'), $('badge2'), $('badge3')
         ];
 
         // ================================================================
@@ -1112,7 +574,6 @@
         }
 
         let toastTimer = null;
-
         function showToast(msg, duration = 2200) {
             toast.textContent = msg;
             toast.classList.add('show');
@@ -1123,42 +584,49 @@
         }
 
         // ================================================================
-        //  核 心 逻 辑 —— 人物随机处理
+        //  核 心 逻 辑
         // ================================================================
 
+        // 获取人物（第一位数字）
         function getCharacter(digit) {
-            // 如果第一位是 0 或 1，从全部角色中随机选一个
             if (digit === '0' || digit === '1') {
-                const randomIndex = Math.floor(Math.random() * ALL_CHARACTERS.length);
-                return ALL_CHARACTERS[randomIndex];
+                const idx = Math.floor(Math.random() * ALL_CHARACTERS.length);
+                return ALL_CHARACTERS[idx];
             }
-            // 否则根据映射取固定角色
-            return CHARACTER_MAP[digit] || '旅人'; // 兜底
+            return CHARACTER_MAP[digit] || '旅人';
         }
 
+        // 获取心境（第三位数字）—— 随机选取
+        function getMood(digit) {
+            const candidates = MOOD_CANDIDATES[digit];
+            if (candidates && candidates.length > 0) {
+                return candidates[Math.floor(Math.random() * candidates.length)];
+            }
+            // 4-9 或未定义时，从默认池随机
+            return DEFAULT_MOOD_POOL[Math.floor(Math.random() * DEFAULT_MOOD_POOL.length)];
+        }
+
+        // 根据生日获取四个词
         function getWordsFromBirth(birth) {
             const digits = birth.split('');
             const character = getCharacter(digits[0]);
-            const scene = WORDS.scene[digits[1]] || '秋日原野';
-            const mood = WORDS.mood[digits[2]] || '静静等待着';
-            const ending = WORDS.ending[digits[3]] || '让每一个今天，都成为值得珍藏的一天。';
+            const scene = SCENE_MAP[digits[1]] || '秋日原野';
+            const mood = getMood(digits[2]);      // 新逻辑
+            const ending = ENDING_MAP[digits[3]] || '让每一个今天，都成为值得珍藏的一天。';
             return [character, scene, mood, ending];
         }
 
-        // 构建诗句（第三句直接使用心境词本身，无多余后缀）
+        // 构建诗句（第三句直接使用心境词，不加额外符号）
         function buildPoem(words) {
             return [
                 `我是${words[0]}，`,
                 `在${words[1]}，`,
                 `${words[2]}`,
-                `${words[3]}`,
+                `${words[3]}`
             ];
         }
 
-        // ================================================================
-        //  翻牌与展示（与之前一致）
-        // ================================================================
-
+        // 重置卡牌
         function resetCards() {
             cardInners.forEach((inner, i) => {
                 inner.classList.remove('flipped');
@@ -1175,6 +643,7 @@
             resultActions.style.pointerEvents = 'none';
         }
 
+        // 翻牌动画
         function flipCardsSequentially(words) {
             if (state.isFlipping) return;
             state.isFlipping = true;
@@ -1194,16 +663,13 @@
 
             const delay = 700;
             const total = cardInners.length;
-
             cardInners.forEach((inner, index) => {
                 setTimeout(() => {
                     inner.classList.add('flipped');
                     setTimeout(() => {
                         badges[index].classList.add('show');
                     }, 300);
-
                     state.flippedCount = index + 1;
-
                     if (state.flippedCount === total) {
                         setTimeout(() => {
                             state.isComplete = true;
@@ -1260,14 +726,13 @@
         }
 
         // ================================================================
-        //  海 报 生 成 (Canvas) —— 使用同样的 getWordsFromBirth 和 buildPoem
+        //  海 报 生 成 (Canvas)
         // ================================================================
 
         function generatePoster(birth, words) {
             const canvas = $('posterCanvas');
             const ctx = canvas.getContext('2d');
-            const W = 600,
-                H = 800;
+            const W = 600, H = 800;
 
             const grad = ctx.createLinearGradient(0, 0, W * 0.6, H);
             grad.addColorStop(0, '#f7efe6');
@@ -1278,14 +743,14 @@
             ctx.fillRect(0, 0, W, H);
 
             const g1 = ctx.createRadialGradient(80, 100, 20, 80, 100, 300);
-            g1.addColorStop(0, 'rgba(220, 190, 160, 0.25)');
-            g1.addColorStop(1, 'rgba(220, 190, 160, 0)');
+            g1.addColorStop(0, 'rgba(220,190,160,0.25)');
+            g1.addColorStop(1, 'rgba(220,190,160,0)');
             ctx.fillStyle = g1;
             ctx.fillRect(0, 0, W, H);
 
             const g2 = ctx.createRadialGradient(W - 60, H - 100, 20, W - 60, H - 100, 350);
-            g2.addColorStop(0, 'rgba(200, 175, 150, 0.2)');
-            g2.addColorStop(1, 'rgba(200, 175, 150, 0)');
+            g2.addColorStop(0, 'rgba(200,175,150,0.2)');
+            g2.addColorStop(1, 'rgba(200,175,150,0)');
             ctx.fillStyle = g2;
             ctx.fillRect(0, 0, W, H);
 
@@ -1299,7 +764,7 @@
             ctx.fillText('🍁', W - 80, H - 160);
             ctx.globalAlpha = 1;
 
-            ctx.strokeStyle = 'rgba(180, 150, 130, 0.2)';
+            ctx.strokeStyle = 'rgba(180,150,130,0.2)';
             ctx.lineWidth = 1;
             ctx.setLineDash([6, 8]);
             ctx.beginPath();
@@ -1319,7 +784,7 @@
             ctx.textBaseline = 'top';
             ctx.fillText(`✦ 生日 · ${formatBirth(birth)} ✦`, W / 2, 112);
 
-            ctx.strokeStyle = 'rgba(180, 150, 130, 0.15)';
+            ctx.strokeStyle = 'rgba(180,150,130,0.15)';
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(100, 150);
@@ -1331,17 +796,14 @@
             ctx.textBaseline = 'top';
             const startY = 190;
             const lineHeight = 52;
-
             lines.forEach((line, i) => {
                 const isLast = (i === lines.length - 1);
                 ctx.fillStyle = isLast ? '#8b6548' : '#3d2a1b';
-                ctx.font = isLast ?
-                    '600 24px "Noto Serif SC", "PingFang SC", serif' :
-                    '500 26px "Noto Serif SC", "PingFang SC", serif';
+                ctx.font = isLast ? '600 24px "Noto Serif SC", "PingFang SC", serif' : '500 26px "Noto Serif SC", "PingFang SC", serif';
                 ctx.fillText(line, W / 2, startY + i * lineHeight);
             });
 
-            ctx.strokeStyle = 'rgba(180, 150, 130, 0.12)';
+            ctx.strokeStyle = 'rgba(180,150,130,0.12)';
             ctx.lineWidth = 1;
             ctx.setLineDash([4, 6]);
             ctx.beginPath();
@@ -1368,7 +830,7 @@
             ctx.fillText('🍁', W - 50, H - 24);
             ctx.globalAlpha = 1;
 
-            ctx.strokeStyle = 'rgba(180, 150, 130, 0.08)';
+            ctx.strokeStyle = 'rgba(180,150,130,0.08)';
             ctx.lineWidth = 2;
             ctx.strokeRect(18, 18, W - 36, H - 36);
 
@@ -1383,7 +845,6 @@
             let val = this.value.replace(/\D/g, '').slice(0, 4);
             this.value = val;
             errorText.classList.remove('show');
-
             if (val.length === 4) {
                 if (isValidDate(val)) {
                     errorText.classList.remove('show');
@@ -1432,9 +893,7 @@
             runExperience(val);
         });
 
-        homeBtn.addEventListener('click', function() {
-            goHome();
-        });
+        homeBtn.addEventListener('click', goHome);
 
         shareBtn.addEventListener('click', function() {
             if (!state.isComplete || !state.birth || !state.words) {
@@ -1508,10 +967,8 @@
         // ================================================================
         //  初 始 化
         // ================================================================
-
         startBtn.disabled = true;
-
-        console.log('🍂 秋日卡牌 · 生日诗签 已加载（人物0和1随机）');
+        console.log('🍂 秋日卡牌 · 生日诗签 已加载（心境随机分组，人物0/1随机）');
     </script>
 
 </body>
