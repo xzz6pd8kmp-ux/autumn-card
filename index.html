@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>秋日卡牌 · 生日诗签</title>
     <style>
-        /* ===== 全局重置 & 基础 ===== */
+        /* ===== 全部样式保持不变 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -23,7 +23,6 @@
             overflow-x: hidden;
         }
 
-        /* ===== 主容器 ===== */
         .app {
             position: relative;
             width: 100%;
@@ -38,7 +37,6 @@
             transition: all 0.3s;
         }
 
-        /* ===== 装饰落叶 ===== */
         .leaf {
             position: absolute;
             pointer-events: none;
@@ -105,7 +103,6 @@
             }
         }
 
-        /* ===== 页面通用 ===== */
         .page {
             display: none;
             flex-direction: column;
@@ -130,7 +127,6 @@
             }
         }
 
-        /* ===== 首页 ===== */
         .home-page {
             padding-top: 18px;
             gap: 10px;
@@ -160,7 +156,6 @@
             margin-bottom: 18px;
         }
 
-        /* 毛玻璃卡片 */
         .glass-card {
             width: 100%;
             background: rgba(255, 248, 240, 0.5);
@@ -308,7 +303,6 @@
             opacity: 1;
         }
 
-        /* ===== 翻牌页 ===== */
         .cards-page {
             padding-top: 8px;
             gap: 14px;
@@ -330,7 +324,6 @@
             opacity: 1;
         }
 
-        /* 卡牌网格 */
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -340,7 +333,6 @@
             margin: 0 auto;
         }
 
-        /* 单张卡牌 */
         .card-container {
             perspective: 800px;
             aspect-ratio: 4 / 5;
@@ -380,7 +372,6 @@
             border: 1px solid rgba(255, 245, 235, 0.3);
         }
 
-        /* 卡牌背面 */
         .card-back {
             background: linear-gradient(145deg, #8b6f56, #6d4f3a);
             transform: rotateY(0deg);
@@ -415,7 +406,6 @@
             letter-spacing: 2px;
         }
 
-        /* 卡牌正面 */
         .card-front {
             background: linear-gradient(160deg, #fcf4ea, #f0e2d0);
             transform: rotateY(180deg);
@@ -454,12 +444,7 @@
             line-height: 1.6;
             letter-spacing: 0.5px;
         }
-        .card-front .card-content .highlight {
-            color: #b8825a;
-            font-weight: 700;
-        }
 
-        /* 卡牌编号角标 */
         .card-badge {
             position: absolute;
             top: -6px;
@@ -481,7 +466,6 @@
             opacity: 1;
         }
 
-        /* 诗句展示区（翻牌完成后） */
         .poem-reveal {
             width: 100%;
             max-width: 360px;
@@ -527,7 +511,6 @@
             padding-top: 10px;
         }
 
-        /* 结果页操作按钮 */
         .result-actions {
             display: flex;
             gap: 12px;
@@ -574,7 +557,6 @@
             box-shadow: 0 10px 32px rgba(184, 130, 90, 0.4);
         }
 
-        /* ===== 海报生成遮罩 ===== */
         .poster-overlay {
             display: none;
             position: fixed;
@@ -684,7 +666,6 @@
             box-shadow: 0 6px 24px rgba(184, 130, 90, 0.35);
         }
 
-        /* ===== Toast ===== */
         .toast {
             position: fixed;
             bottom: 40px;
@@ -713,7 +694,6 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* ===== 工具类 ===== */
         .hidden {
             display: none !important;
         }
@@ -727,7 +707,6 @@
             gap: 6px;
         }
 
-        /* ===== 响应式 ===== */
         @media (max-width: 420px) {
             .app {
                 padding: 16px 14px 22px;
@@ -804,7 +783,6 @@
             }
         }
 
-        /* ===== 加载状态 ===== */
         .loading-dots::after {
             content: '...';
             animation: dots 1.2s steps(4, end) infinite;
@@ -827,7 +805,6 @@
             }
         }
 
-        /* ===== 秋日光晕 ===== */
         .glow {
             position: absolute;
             border-radius: 50%;
@@ -859,7 +836,6 @@
             opacity: 0.12;
         }
 
-        /* ===== 滚动条隐藏 ===== */
         ::-webkit-scrollbar {
             width: 0;
             height: 0;
@@ -868,18 +844,14 @@
 </head>
 <body>
 
-    <!-- ===== Toast ===== -->
     <div class="toast" id="toast"></div>
 
-    <!-- ===== 主应用 ===== -->
     <div class="app" id="app">
 
-        <!-- 装饰光晕 -->
         <div class="glow g1"></div>
         <div class="glow g2"></div>
         <div class="glow g3"></div>
 
-        <!-- 装饰落叶 -->
         <div class="leaf">🍂</div>
         <div class="leaf">🍁</div>
         <div class="leaf">🍂</div>
@@ -912,7 +884,6 @@
             <div class="page-header">🍂 翻开你的 <span>秋日诗签</span></div>
 
             <div class="cards-grid" id="cardsGrid">
-                <!-- 卡牌 1 -->
                 <div class="card-container" data-index="0">
                     <div class="card-inner" id="cardInner0">
                         <div class="card-face card-back">
@@ -930,7 +901,6 @@
                     <div class="card-badge" id="badge0">✦</div>
                 </div>
 
-                <!-- 卡牌 2 -->
                 <div class="card-container" data-index="1">
                     <div class="card-inner" id="cardInner1">
                         <div class="card-face card-back">
@@ -948,7 +918,6 @@
                     <div class="card-badge" id="badge1">✦</div>
                 </div>
 
-                <!-- 卡牌 3 -->
                 <div class="card-container" data-index="2">
                     <div class="card-inner" id="cardInner2">
                         <div class="card-face card-back">
@@ -966,7 +935,6 @@
                     <div class="card-badge" id="badge2">✦</div>
                 </div>
 
-                <!-- 卡牌 4 -->
                 <div class="card-container" data-index="3">
                     <div class="card-inner" id="cardInner3">
                         <div class="card-face card-back">
@@ -985,15 +953,13 @@
                 </div>
             </div>
 
-            <!-- 诗句展示 -->
             <div class="poem-reveal" id="poemReveal">
                 <div class="poem-lines" id="poemLines"></div>
                 <div class="poem-birth" id="poemBirth"></div>
             </div>
 
-            <!-- 操作按钮 -->
             <div class="result-actions" id="resultActions">
-                <button class="btn-secondary" id="regenerateBtn">🔄 重新生成</button>
+                <button class="btn-secondary" id="homeBtn">🏠 返回首页</button>
                 <button class="btn-secondary primary" id="shareBtn">✨ 生成海报</button>
             </div>
         </div>
@@ -1006,7 +972,6 @@
             <canvas id="posterCanvas" width="600" height="800"></canvas>
             <div class="poster-actions">
                 <button class="btn-sm" id="downloadPoster">💾 保存图片</button>
-                <!-- 修改点：将“分享社区”改为“复制诗歌” -->
                 <button class="btn-sm primary" id="copyPoemBtn">📋 复制诗歌</button>
             </div>
         </div>
@@ -1071,31 +1036,28 @@
         //  状 态
         // ================================================================
         let state = {
-            birth: '', // 四位数字字符串
-            digits: [], // [d1, d2, d3, d4]
-            words: [], // [人物, 场景, 心境, 结尾]
+            birth: '',
+            digits: [],
+            words: [],
             isFlipping: false,
             flippedCount: 0,
             isComplete: false,
         };
 
-        // DOM 引用
         const $ = id => document.getElementById(id);
         const homePage = $('homePage');
         const cardsPage = $('cardsPage');
         const birthInput = $('birthInput');
         const errorText = $('errorText');
         const startBtn = $('startBtn');
-        const cardsGrid = $('cardsGrid');
         const poemReveal = $('poemReveal');
         const poemLines = $('poemLines');
         const poemBirth = $('poemBirth');
         const resultActions = $('resultActions');
-        const regenerateBtn = $('regenerateBtn');
+        const homeBtn = $('homeBtn');
         const shareBtn = $('shareBtn');
         const toast = $('toast');
 
-        // 卡牌相关
         const cardInners = [
             $('cardInner0'),
             $('cardInner1'),
@@ -1119,24 +1081,21 @@
         //  工 具 函 数
         // ================================================================
 
-        // 校验月日是否合法
         function isValidDate(mmd) {
             if (!/^\d{4}$/.test(mmd)) return false;
             const month = parseInt(mmd.slice(0, 2), 10);
             const day = parseInt(mmd.slice(2, 4), 10);
             if (month < 1 || month > 12) return false;
             if (day < 1) return false;
-            const daysInMonth = new Date(2000, month, 0).getDate(); // 2000 是闰年，但用于月日校验足够
+            const daysInMonth = new Date(2000, month, 0).getDate();
             return day <= daysInMonth;
         }
 
-        // 格式化生日显示
         function formatBirth(mmd) {
             if (!mmd || mmd.length !== 4) return mmd;
             return mmd.slice(0, 2) + '.' + mmd.slice(2, 4);
         }
 
-        // Toast
         let toastTimer = null;
 
         function showToast(msg, duration = 2200) {
@@ -1152,7 +1111,6 @@
         //  核 心 逻 辑
         // ================================================================
 
-        // 根据生日获取对应的词
         function getWordsFromBirth(birth) {
             const digits = birth.split('').map(Number);
             return [
@@ -1163,17 +1121,16 @@
             ];
         }
 
-        // 构建诗句文本
+        // ----- 修改点：第三句从“在{心境}的，”改为“{心境}的，” -----
         function buildPoem(words) {
             return [
                 `我是${words[0]}，`,
                 `在${words[1]}，`,
-                `正${words[2]}，`,
+                `${words[2]}的，`,    // 去掉了“在”字
                 `${words[3]}`,
             ];
         }
 
-        // 重置卡牌状态（保留词数据）
         function resetCards() {
             cardInners.forEach((inner, i) => {
                 inner.classList.remove('flipped');
@@ -1190,14 +1147,12 @@
             resultActions.style.pointerEvents = 'none';
         }
 
-        // 翻牌动画（依次翻转）
         function flipCardsSequentially(words) {
             if (state.isFlipping) return;
             state.isFlipping = true;
             state.isComplete = false;
             state.flippedCount = 0;
 
-            // 先重置所有卡牌
             cardInners.forEach((inner, i) => {
                 inner.classList.remove('flipped');
                 cardContents[i].textContent = words[i] || '—';
@@ -1209,21 +1164,18 @@
             resultActions.style.opacity = '0';
             resultActions.style.pointerEvents = 'none';
 
-            // 依次翻转
             const delay = 700;
             const total = cardInners.length;
 
             cardInners.forEach((inner, index) => {
                 setTimeout(() => {
                     inner.classList.add('flipped');
-                    // 显示角标
                     setTimeout(() => {
                         badges[index].classList.add('show');
                     }, 300);
 
                     state.flippedCount = index + 1;
 
-                    // 最后一张翻完后，展示完整诗句
                     if (state.flippedCount === total) {
                         setTimeout(() => {
                             state.isComplete = true;
@@ -1237,7 +1189,6 @@
             });
         }
 
-        // 展示完整诗句
         function showCompletePoem(words) {
             const lines = buildPoem(words);
             poemLines.innerHTML = lines.map(l => `<span class="line">${l}</span>`).join('');
@@ -1245,31 +1196,43 @@
             poemReveal.classList.add('show');
         }
 
-        // 执行整个流程
         function runExperience(birth) {
             state.birth = birth;
             state.digits = birth.split('').map(Number);
             state.words = getWordsFromBirth(birth);
 
-            // 切换到翻牌页
             homePage.classList.remove('active');
             cardsPage.classList.add('active');
 
-            // 重置并翻牌
             resetCards();
-            // 预填充内容
             cardContents.forEach((el, i) => {
                 el.textContent = state.words[i] || '—';
             });
 
-            // 小延迟后开始翻牌
             setTimeout(() => {
                 flipCardsSequentially(state.words);
             }, 400);
         }
 
+        function goHome() {
+            if (state.isFlipping) return;
+            resetCards();
+            state.birth = '';
+            state.digits = [];
+            state.words = [];
+            state.isComplete = false;
+            cardsPage.classList.remove('active');
+            homePage.classList.add('active');
+            birthInput.value = '';
+            startBtn.disabled = true;
+            errorText.classList.remove('show');
+            resultActions.style.opacity = '0';
+            resultActions.style.pointerEvents = 'none';
+            showToast('🏠 已返回首页');
+        }
+
         // ================================================================
-        //  海 报 生 成 (Canvas)
+        //  海 报 生 成 (Canvas) —— 使用同样的 buildPoem
         // ================================================================
 
         function generatePoster(birth, words) {
@@ -1278,7 +1241,6 @@
             const W = 600,
                 H = 800;
 
-            // 背景渐变
             const grad = ctx.createLinearGradient(0, 0, W * 0.6, H);
             grad.addColorStop(0, '#f7efe6');
             grad.addColorStop(0.4, '#ecdccb');
@@ -1287,7 +1249,6 @@
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, W, H);
 
-            // 装饰光晕
             const g1 = ctx.createRadialGradient(80, 100, 20, 80, 100, 300);
             g1.addColorStop(0, 'rgba(220, 190, 160, 0.25)');
             g1.addColorStop(1, 'rgba(220, 190, 160, 0)');
@@ -1300,8 +1261,6 @@
             ctx.fillStyle = g2;
             ctx.fillRect(0, 0, W, H);
 
-            // 落叶装饰
-            const leaves = ['🍂', '🍁', '🍂', '🍁'];
             ctx.font = '48px serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -1312,7 +1271,6 @@
             ctx.fillText('🍁', W - 80, H - 160);
             ctx.globalAlpha = 1;
 
-            // 顶部装饰线
             ctx.strokeStyle = 'rgba(180, 150, 130, 0.2)';
             ctx.lineWidth = 1;
             ctx.setLineDash([6, 8]);
@@ -1322,20 +1280,17 @@
             ctx.stroke();
             ctx.setLineDash([]);
 
-            // 标题
             ctx.fillStyle = '#3d2a1b';
             ctx.font = '600 36px "Noto Serif SC", "PingFang SC", serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'top';
             ctx.fillText('🍂 秋日诗签', W / 2, 60);
 
-            // 生日
             ctx.fillStyle = '#8b6548';
             ctx.font = '400 18px "Noto Serif SC", serif';
             ctx.textBaseline = 'top';
             ctx.fillText(`✦ 生日 · ${formatBirth(birth)} ✦`, W / 2, 112);
 
-            // 分隔线
             ctx.strokeStyle = 'rgba(180, 150, 130, 0.15)';
             ctx.lineWidth = 1;
             ctx.beginPath();
@@ -1343,7 +1298,6 @@
             ctx.lineTo(W - 100, 150);
             ctx.stroke();
 
-            // 诗句 — 居中展示
             const lines = buildPoem(words);
             ctx.textAlign = 'center';
             ctx.textBaseline = 'top';
@@ -1359,7 +1313,6 @@
                 ctx.fillText(line, W / 2, startY + i * lineHeight);
             });
 
-            // 底部装饰
             ctx.strokeStyle = 'rgba(180, 150, 130, 0.12)';
             ctx.lineWidth = 1;
             ctx.setLineDash([4, 6]);
@@ -1369,7 +1322,6 @@
             ctx.stroke();
             ctx.setLineDash([]);
 
-            // 底部 logo 区域
             const logoY = 480;
             ctx.fillStyle = '#b99a82';
             ctx.font = '400 14px "Noto Serif SC", serif';
@@ -1381,7 +1333,6 @@
             ctx.textBaseline = 'top';
             ctx.fillText('· 社区 ·', W / 2, logoY + 32);
 
-            // 底部小叶子
             ctx.globalAlpha = 0.1;
             ctx.font = '28px serif';
             ctx.textBaseline = 'bottom';
@@ -1389,7 +1340,6 @@
             ctx.fillText('🍁', W - 50, H - 24);
             ctx.globalAlpha = 1;
 
-            // 边框装饰
             ctx.strokeStyle = 'rgba(180, 150, 130, 0.08)';
             ctx.lineWidth = 2;
             ctx.strokeRect(18, 18, W - 36, H - 36);
@@ -1401,7 +1351,6 @@
         //  事 件 绑 定
         // ================================================================
 
-        // 生日输入
         birthInput.addEventListener('input', function(e) {
             let val = this.value.replace(/\D/g, '').slice(0, 4);
             this.value = val;
@@ -1420,7 +1369,6 @@
             }
         });
 
-        // 输入框自动补0（失焦时处理）
         birthInput.addEventListener('blur', function() {
             let val = this.value;
             if (val.length === 3) {
@@ -1436,14 +1384,12 @@
             }
         });
 
-        // 回车触发
         birthInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && !startBtn.disabled) {
                 startBtn.click();
             }
         });
 
-        // 开始按钮
         startBtn.addEventListener('click', function() {
             const val = birthInput.value.trim();
             if (val.length !== 4) {
@@ -1458,23 +1404,10 @@
             runExperience(val);
         });
 
-        // 重新生成
-        regenerateBtn.addEventListener('click', function() {
-            if (state.isFlipping) return;
-            if (!state.birth) return;
-            // 重新翻牌
-            resetCards();
-            // 重新填充内容
-            cardContents.forEach((el, i) => {
-                el.textContent = state.words[i] || '—';
-            });
-            setTimeout(() => {
-                flipCardsSequentially(state.words);
-            }, 300);
-            showToast('🔄 重新翻开秋日诗签...');
+        homeBtn.addEventListener('click', function() {
+            goHome();
         });
 
-        // 生成海报
         shareBtn.addEventListener('click', function() {
             if (!state.isComplete || !state.birth || !state.words) {
                 showToast('请先完成翻牌');
@@ -1490,7 +1423,6 @@
             }
         });
 
-        // 关闭海报
         $('posterClose').addEventListener('click', closePoster);
         $('posterOverlay').addEventListener('click', function(e) {
             if (e.target === this) closePoster();
@@ -1501,7 +1433,6 @@
             document.body.style.overflow = '';
         }
 
-        // 下载海报
         $('downloadPoster').addEventListener('click', function() {
             const canvas = $('posterCanvas');
             const link = document.createElement('a');
@@ -1511,16 +1442,13 @@
             showToast('💾 已保存到相册');
         });
 
-        // ---- 修改点：复制诗歌 ----
         $('copyPoemBtn').addEventListener('click', function() {
             if (!state.isComplete || !state.words) {
                 showToast('请先完成翻牌');
                 return;
             }
             const lines = buildPoem(state.words);
-            // 组装成纯文本，含换行
             const poemText = lines.join('\n') + `\n\n✦ 生日 · ${formatBirth(state.birth)} ✦`;
-            // 使用剪贴板 API
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(poemText).then(() => {
                     showToast('📋 诗歌已复制到剪贴板');
@@ -1532,7 +1460,6 @@
             }
         });
 
-        // 兼容方案：创建临时输入框复制
         function fallbackCopy(text) {
             const textarea = document.createElement('textarea');
             textarea.value = text;
@@ -1549,17 +1476,14 @@
             }
             document.body.removeChild(textarea);
         }
-        // ---- 修改结束 ----
 
         // ================================================================
         //  初 始 化
         // ================================================================
 
-        // 默认禁用按钮
         startBtn.disabled = true;
 
-        console.log('🍂 秋日卡牌 · 生日诗签 已加载');
-        console.log('📖 输入你的生日 (MMDD) 开始体验');
+        console.log('🍂 秋日卡牌 · 生日诗签 已加载（最终版）');
     </script>
 
 </body>
